@@ -1,0 +1,2 @@
+- include: cat2.yml
+  when: apache_cat2 | bool

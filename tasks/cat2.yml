@@ -1,0 +1,10 @@
+- name: "MED | V-26294 | Web server status module must be disables"
+  lineinfile:
+    path:   "{{ httpd_conf_file }}"
+    state:  absent
+    regexp: "^LoadModule {{ item }}"
+  with_items:
+    - 'info_module'
+    - 'status_module'
+
+    

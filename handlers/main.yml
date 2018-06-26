@@ -1,0 +1,5 @@
+- name: restart_httpd
+  # Need info on which systems use "apache", etc.
+  service:
+    name:   httpd
+    state:  restarted

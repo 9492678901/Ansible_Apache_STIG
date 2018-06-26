@@ -1,0 +1,8 @@
+---
+- hosts:  josiah
+  become: yes
+
+  roles:
+    - role: leam_hall.Apache_STIG
+
+
