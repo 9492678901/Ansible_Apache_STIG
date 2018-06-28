@@ -1,0 +1,20 @@
+
+## Using Tags.
+
+# Tags provide a way to run, or to skip, certain parts
+# of a playbook. 
+
+# This would run ONLY things tagged with "cat2":
+
+  ansible-playbook apache_stig.yml -K --tags "cat2"
+
+
+# This would run everything BUT those tagged with "cat2":
+
+  ansible-playbook apache_stig.yml -K --skip-tags "cat2"
+
+
+# With the exact same playbooks, this would run everything,
+# tagged or not:
+
+  ansible-playbook apache_stig.yml -K
