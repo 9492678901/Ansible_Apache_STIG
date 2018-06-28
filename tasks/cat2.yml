@@ -6,5 +6,8 @@
   with_items:
     - 'info_module'
     - 'status_module'
+  tags:
+    - cat2
+    - V-26294
 
     
