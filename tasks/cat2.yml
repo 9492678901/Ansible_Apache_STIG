@@ -1,4 +1,19 @@
-- name: "MED | V-26294 | Web server status module must be disables"
+
+
+- name: "MED | V-26287 | Web Distributed Authoring and Versioning (WebDAV) must be disabled."
+  lineinfile:
+    path:   "{{ httpd_conf_file }}"
+    state:  absent
+    regexp: "^LoadModule {{ item }}"
+  with_items:
+    - 'dav_module'
+    - 'dav_fs_module'
+    - 'dav_lock_module'
+  tags:
+    - cat2
+    - V-26287
+
+- name: "MED | V-26294 | Web server status module must be disabled"
   lineinfile:
     path:   "{{ httpd_conf_file }}"
     state:  absent
@@ -10,4 +25,42 @@
     - cat2
     - V-26294
 
+- name: "MED | V-26299 | The web server must not be configured as a proxy server."
+  lineinfile:
+    path:   "{{ httpd_conf_file }}"
+    state:  absent
+    regexp: "^LoadModule {{ item }}"
+  with_items:
+    - 'proxy_module'
+    - 'proxy_ajp_module'
+    - 'proxy_balancer_module'
+    - 'proxy_ftp_module'
+    - 'proxy_http_module'
+    - 'proxy_connect_module'
+  tags:
+    - cat2
+    - V-26299
+    
+- name: "MED | V-26302 | User specific directories must not be globally enabled."
+  lineinfile:
+    path:   "{{ httpd_conf_file }}"
+    state:  absent
+    regexp: "^LoadModule {{ item }}"
+  with_items:
+    - 'userdir_module'
+  tags:
+    - cat2
+    - V-26302
+    
+- name: "MED | V-26368 | Automatic directory indexing must be disabled."
+  lineinfile:
+    path:   "{{ httpd_conf_file }}"
+    state:  absent
+    regexp: "^LoadModule {{ item }}"
+  with_items:
+    - 'autoindex_module'
+  tags:
+    - cat2
+    - V-26368
+  
     
