@@ -1,2 +1,5 @@
 - include: cat2.yml
   when: apache_cat2 | bool
+
+- include: cat1.yml
+  when: apache_cat1 | bool

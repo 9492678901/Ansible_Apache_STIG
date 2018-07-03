@@ -1,0 +1,12 @@
+
+
+- name: "HIGH | V-13733 | Server Side Includes (SSIs) must be run with execution capability disabled."
+  lineinfile:
+    path:     "{{ httpd_conf_file }}"
+    regexp:   "Options(.*)(\\sIndex\\s)(.*)"
+    line:     '\1\3'
+    backrefs: yes
+  tags:
+    - cat1
+    - V-13733
+
