@@ -1,50 +1,45 @@
 
-- name: "HIGH | V-13733 | Server Side Includes (SSIs) must be run with execution capability disabled. Remove 'Includes'."
-  lineinfile:
-    path:     "{{ httpd_conf_file }}"
-    regexp:   '(.*)Options(.*)(\sIncludes\s)(.*)'
-    line:     '\1Options \2\4'
-    backrefs: yes
-  tags:
-    - cat1
-    - V-13733
-
-- name: "HIGH | V-13733 | Server Side Includes (SSIs) must be run with execution capability disabled. Remove '+Includes'."
-  lineinfile:
-    path:     "{{ httpd_conf_file }}"
-    regexp:   '(.*)Options(.*)(\s+Includes\s)(.*)'
-    line:     '\1Options \2\4'
-    backrefs: yes
-  tags:
-    - cat1
-    - V-13733
-
-- name: "HIGH | V-13733 | Server Side Includes (SSIs) must be run with execution capability disabled. Remove bare 'IncludesNoExec'."
-  lineinfile:
-    path:     "{{ httpd_conf_file }}"
-    regexp:   '(.*)Options(.*)(\sIncludesNoExec\s)(.*)'
-    line:     '\1Options \2\4'
-    backrefs: yes
-  tags:
-    - cat1
-    - V-13733
-
 - name: "HIGH | V-13733 | Server Side Includes (SSIs) must be run with execution capability disabled. Add '-IncludesNoExec'"
-  lineinfile:
+  replace:
     path:     "{{ httpd_conf_file }}"
-    regexp:   "(.*)Options(.*)"
-    line:     '\1Options\2 -IncludesNoExec'
-    backrefs: yes
+    regexp:   '^(\s+)Options(.*)$'
+    replace:  '\1Options\2 -IncludesNoExec'
   tags:
     - cat1
     - V-13733
 
 - name: "HIGH | V-13733 | Server Side Includes (SSIs) must be run with execution capability disabled. Remove extra '-IncludesNoExec'"
-  lineinfile:
+  replace:
     path:     "{{ httpd_conf_file }}"
-    regexp:   "(.*)Options(.*)(-IncludesNoExec -IncludesNoExec)"
-    line:     '\1Options\2 -IncludesNoExec'
-    backrefs: yes
+    regexp:   '(\s+)Options(.*)(-IncludesNoExec -IncludesNoExec)'
+    replace:  '\1Options\2 -IncludesNoExec'
+  tags:
+    - cat1
+    - V-13733
+
+- name: "HIGH | V-13733 | Server Side Includes (SSIs) must be run with execution capability disabled. Remove 'Includes'."
+  replace:
+    path:     "{{ httpd_conf_file }}"
+    regexp:   '^(\s+)Options(.*)(\sIncludes\s)(.*)'
+    replace:  '\1Options \2 \4'
+  tags:
+    - cat1
+    - V-13733
+
+- name: "HIGH | V-13733 | Server Side Includes (SSIs) must be run with execution capability disabled. Remove '+Includes'."
+  replace:
+    path:     "{{ httpd_conf_file }}"
+    regexp:   '^(\s+)Options(.*)(\s\+Includes\s)(.*)'
+    replace:  '\1Options \2 \4'
+  tags:
+    - cat1
+    - V-13733
+
+- name: "HIGH | V-13733 | Server Side Includes (SSIs) must be run with execution capability disabled. Remove bare 'IncludesNoExec'."
+  replace:
+    path:     "{{ httpd_conf_file }}"
+    regexp:   '^(\s+)Options(.*)(\sIncludesNoExec\s)(.*)'
+    replace:  '\1Options \2\4'
   tags:
     - cat1
     - V-13733
