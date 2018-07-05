@@ -13,6 +13,17 @@
     - cat2
     - V-2225
 
+- name: "MED | V-6724 | Web server and/or operating system information must be protected."
+  lineinfile:    
+    path:   "{{ httpd_conf_file }}"
+    regexp: "^ServerTokens "
+    line:   "ServerTokens Prod"
+    state:  present
+  tags:
+    - cat2
+    - V-6724
+
+
 - name: "MED | V-26287 | Web Distributed Authoring and Versioning (WebDAV) must be disabled."
   lineinfile:
     path:   "{{ httpd_conf_file }}"
