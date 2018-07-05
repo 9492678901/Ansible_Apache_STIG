@@ -13,16 +13,6 @@
     - cat2
     - V-2225
 
-- name: "MED | V-6724 | Web server and/or operating system information must be protected."
-  lineinfile:    
-    path:   "{{ httpd_conf_file }}"
-    regexp: "^ServerTokens "
-    line:   "ServerTokens Prod"
-    state:  present
-  tags:
-    - cat2
-    - V-6724
-
 - name: "MED | V-13613 | The Web site software used with the web server must have all applicable security patches applied and documented."
   yum:
     name:   "*"
@@ -31,7 +21,15 @@
     - cat2
     - V-13613
 
-
+- name: "MED | V-13724 | The Timeout directive must be properly set."
+  lineinfile:
+    path:   "{{ httpd_conf_file }}"
+    state:  present
+    regexp: "^Timeout "
+    line:   "Timeout {{ timeout_time }}"
+  tags:
+    - cat2
+    - V-13724
 
 - name: "MED | V-26287 | Web Distributed Authoring and Versioning (WebDAV) must be disabled."
   lineinfile:

@@ -3,7 +3,7 @@
   lineinfile:    
     path:   "{{ httpd_conf_file }}"
     regexp: "^ServerTokens "
-    line:   "ServerTokens Prod"
+    line:   "ServerTokens {{ servertokens }}"
     state:  present
   tags:
     - cat3

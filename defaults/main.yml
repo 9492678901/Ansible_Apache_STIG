@@ -8,3 +8,9 @@ apache_cat3:  yes
 
 #httpd_conf_file:  /etc/httpd/conf/httpd.conf
 httpd_conf_file:  /var/tmp/httpd.conf
+
+# Various settings
+
+servertokens:   "Prod"
+timeout_time:   300
+
