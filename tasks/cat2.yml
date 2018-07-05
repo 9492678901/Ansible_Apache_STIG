@@ -23,6 +23,15 @@
     - cat2
     - V-6724
 
+- name: "MED | V-13613 | The Web site software used with the web server must have all applicable security patches applied and documented."
+  yum:
+    name:   "*"
+    state:  latest
+  tags:
+    - cat2
+    - V-13613
+
+
 
 - name: "MED | V-26287 | Web Distributed Authoring and Versioning (WebDAV) must be disabled."
   lineinfile:
