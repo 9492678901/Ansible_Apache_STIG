@@ -1,4 +1,17 @@
 
+- name: "MED | V-2225 | MIME types for csh and shell programs must be disabled."
+  replace:  
+    path:     "{{ httpd_conf_file }}"
+    regexp:   "^(\\s+)AddHandler(\\s+)([a-z-]*)(\\s+){{ item }}(\\s)"
+    replace:  "\\1#  AddHandler  \\2 \\3 {{ item }} \n"
+  with_items:
+    - '.csh'
+    - '.sh'
+    - '.bash'
+    - '.ksh'
+  tags:
+    - cat2
+    - V-2225
 
 - name: "MED | V-26287 | Web Distributed Authoring and Versioning (WebDAV) must be disabled."
   lineinfile:
@@ -63,4 +76,5 @@
     - cat2
     - V-26368
   
-    
+   
+   
