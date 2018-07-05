@@ -16,3 +16,4 @@ timeout_time:     300
 keepalivetimeout: 10
 startservers:     6
 minspareservers:  6
+maxspareservers:  9

@@ -1,12 +1,21 @@
 
 - name: "LOW | V-6724 | Web server and/or operating system information must be protected."
-  lineinfile:    
-    path:   "{{ httpd_conf_file }}"
-    regexp: "^ServerTokens "
-    line:   "ServerTokens {{ servertokens }}"
-    state:  present
+  replace:    
+    path:     "{{ httpd_conf_file }}"
+    regexp:   "^ServerTokens "
+    replace:  "ServerTokens {{ servertokens }}"
   tags:
     - cat3
     - V-6724
+
+- name: "LOW | V-13729 | The httpd.conf MaxSpareServers directive must be set properly."
+  replace:    
+    path:   "{{ httpd_conf_file }}"
+    regexp: "^MaxSpareServers (.*)$"
+    replace:   "MaxSpareServers {{ maxspareservers }} "
+  tags:
+    - cat3
+    - V-13729
+
 
 
