@@ -60,6 +60,18 @@
     - cat2
     - V-13727
 
+- name: "MED | V-13728 | The httpd.conf MinSpareServers directive must be set properly."
+  replace:
+    path:     "{{ httpd_conf_file }}"
+    regexp:   "^MinSpareServers (.*)$"
+    replace:  "MinSpareServers {{ minspareservers }} "
+  tags:
+    - cat2
+    - V-13728
+
+- name: "MED | V-26287 | Web Distributed Authoring and Versioning (WebDAV) must be disabled."
+  lineinfile:
+    path:   "{{ httpd_conf_file }}"
 - name: "MED | V-26287 | Web Distributed Authoring and Versioning (WebDAV) must be disabled."
   lineinfile:
     path:   "{{ httpd_conf_file }}"
