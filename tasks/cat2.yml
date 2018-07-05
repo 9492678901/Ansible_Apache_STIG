@@ -31,6 +31,26 @@
     - cat2
     - V-13724
 
+- name: "MED | V-13725 | The KeepAlive directive must be enabled."
+  lineinfile:
+    path:   "{{ httpd_conf_file }}"
+    state:  present
+    regexp: "^KeepAlive "
+    line:   "KeepAlive On"
+  tags:
+    - cat2
+    - V-13725
+
+- name: "MED | V-13726 | The KeepAlive directive must be enabled."
+  lineinfile:
+    path:   "{{ httpd_conf_file }}"
+    state:  present
+    regexp: "^KeepAliveTimeout "
+    line:   "KeepAliveTimeout {{ keepalivetimeout }}"
+  tags:
+    - cat2
+    - V-13726
+
 - name: "MED | V-26287 | Web Distributed Authoring and Versioning (WebDAV) must be disabled."
   lineinfile:
     path:   "{{ httpd_conf_file }}"
