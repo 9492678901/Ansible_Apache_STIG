@@ -17,3 +17,4 @@ keepalivetimeout: 10
 startservers:     6
 minspareservers:  6
 maxspareservers:  9
+maxclients:       256
