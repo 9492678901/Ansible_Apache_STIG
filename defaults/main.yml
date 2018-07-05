@@ -11,6 +11,7 @@ httpd_conf_file:  /var/tmp/httpd.conf
 
 # Various settings
 
-servertokens:   "Prod"
-timeout_time:   300
+servertokens:     "Prod"
+timeout_time:     300
 keepalivetimeout: 10
+startservers:     5
