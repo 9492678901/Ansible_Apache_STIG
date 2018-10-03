@@ -1,0 +1,15 @@
+
+# Ansible Galaxy can install from a tar.gz file. 
+# However, it needs to be told to install in the 
+# /etc/ansible/roles directory, and to remove the 
+# '.tar.gz' from the role name.
+# In the command below:
+#   -p /etc/ansible/roles     # Install in the default.
+#   ansible_apache_stig.tar.gz
+#   ,,                        # Yes, two commas.
+#   <org_name>.apache_stig    # What the role will be.
+ansible-galaxy install -p /etc/ansible/roles ansible_apache_stig.tar.gz,,<org_name>.apache_stig
+
+# Copy the 'apache_stig.yml' file from the role to your
+# playbook area. Edit the file to reference the role name,
+# <org_name>.apache_stig. Then run the playbook.

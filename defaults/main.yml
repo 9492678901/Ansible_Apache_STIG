@@ -6,8 +6,7 @@ apache_cat1:  yes
 apache_cat2:  yes
 apache_cat3:  yes
 
-#httpd_conf_file:  /etc/httpd/conf/httpd.conf
-httpd_conf_file:  /var/tmp/httpd.conf
+httpd_conf_file:  /etc/httpd/conf/httpd.conf
 
 # Various settings
 

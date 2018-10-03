@@ -1,0 +1,13 @@
+
+# Install latest httpd
+- name: yum_latest_apache
+  yum:
+    name:   "httpd"
+    state:  "latest" 
+  when: ansible_distribution_major_version == '6' 
+
+- name: dnf_latest_apache
+  dnf:
+    name:   "httpd"
+    state:  "latest" 
+  when: ansible_distribution_major_version == '7' 

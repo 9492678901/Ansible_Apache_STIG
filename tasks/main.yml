@@ -1,10 +1,16 @@
+# tasks/main.yml
+
+- include: install_httpd.yml
 
 - include: cat1.yml
   when: apache_cat1 | bool
+  notify: restart_httpd
 
 - include: cat2.yml
   when: apache_cat2 | bool
+  notify: restart_httpd
 
 - include: cat3.yml
   when: apache_cat3 | bool
+  notify: restart_httpd
 

@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: "Leam Hall"
+  description: "Ansible role to apply Apache STIG"
+  company: "Alba Systems"
+  license: MIT
+  min_ansible_version: 2.3
+
+  platforms:
+  - name: EL
+    versions:
+      - 6
+
+  galaxy_tags:
+    - security
+    - stig
+    - hardening
+
+dependencies: []

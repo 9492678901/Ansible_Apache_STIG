@@ -1,8 +1,8 @@
+# apache_stig.yml
+#
 ---
-- hosts:  josiah
-  #become: yes
+- hosts:  numbers
+  become: yes
 
   roles:
-    - role: leam_hall.Apache_STIG
-
-
+    - role: leamhall.apache_stig
