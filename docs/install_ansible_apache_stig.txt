@@ -1,0 +1,39 @@
+# install_ansible_apache_stig.txt
+
+# This file comes bundled with two tar.gz files.
+
+# Install Ansible
+# ===============
+#
+# As root, in a tmp directory with sufficient space:
+
+    tar -xzvf ansible_rpms.tar.gz 
+    cd ansible_rpms
+    yum -y install *.rpm
+    rm ansible_rpms.tar.gz
+
+
+
+# Install the Ansible Role
+# ========================
+#
+# As root, in a tmp directory with sufficient space:
+
+  ansible-galaxy install -p /etc/ansible/roles ansible_apache_stig.tar.gz,,<org_name>.apache_stig
+  
+# As the sudo enabled user, 
+#   Create an Ansible work space and 'playbooks' directory.
+#   Move into the directory and copy in the playbook.
+#   Run the playbook.
+
+  mkdir -p ansible/playbooks
+  cd ansible
+  cp /etc/ansible/roles/<org_name>.apache_stig/apache_stig.yml playbooks
+  ansible-playbook playbooks/apache_stig.yml -K
+
+
+# At this point Ansible and Apache are installed.
+# Apache is STIG'd.
+
+
+    
