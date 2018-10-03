@@ -10,20 +10,22 @@
     tar -xzvf ansible_rpms.tar.gz 
     cd ansible_rpms
     yum -y install *.rpm
-    rm ansible_rpms.tar.gz
+    rm ../ansible_rpms.tar.gz
 
 
 
 # Install the Ansible Role
 # ========================
 #
-# As root, in a tmp directory with sufficient space:
+# As root, in a tmp directory with sufficient space (~70M):
 
   ansible-galaxy install -p /etc/ansible/roles ansible_apache_stig.tar.gz,,<org_name>.apache_stig
   
 # As the sudo enabled user, 
-#   Create an Ansible work space and 'playbooks' directory.
-#   Move into the directory and copy in the playbook.
+#   Create an Ansible work space and 'playbooks' directory 
+#     in your home space.
+#   Move into the Ansible directory and copy the playbook from the role.
+#   If needed, edit defaults/main.yml.
 #   Run the playbook.
 
   mkdir -p ansible/playbooks
@@ -36,4 +38,47 @@
 # Apache is STIG'd.
 
 
-    
+
+### Extra detail
+### ============
+
+# Ansible Galaxy
+# ==============
+
+# Ansible Galaxy can install from a tar.gz file. 
+# However, it needs to be told to install in the 
+# /etc/ansible/roles directory, and to remove the 
+# '.tar.gz' from the role name.
+# In the command below:
+#   -p /etc/ansible/roles     # Install in the default.
+#   ansible_apache_stig.tar.gz
+#   ,,                        # Yes, two commas.
+#   <org_name>.apache_stig    # What the role will be. 
+
+ansible-galaxy install -p /etc/ansible/roles ansible_apache_stig.tar.gz,,<org_name>.apache_stig
+
+# So you wind up with:
+
+#  /etc/ansible/roles/<org_name>.apache_stig/
+
+
+
+# Tags
+# ====
+
+# Tags provide a way to run, or to skip, certain parts
+# of a playbook. 
+
+# This would run ONLY things tagged with "cat2":
+
+  ansible-playbook apache_stig.yml -K --tags "cat2"
+
+# This would run everything BUT those tagged with "cat2":
+
+  ansible-playbook apache_stig.yml -K --skip-tags "cat2"
+
+# With the exact same playbooks, this would run everything,
+# tagged or not:
+
+  ansible-playbook apache_stig.yml -K
+
