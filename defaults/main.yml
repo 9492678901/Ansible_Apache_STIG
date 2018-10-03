@@ -2,9 +2,11 @@
 # Base configs. 
 # Currently slanted towards RHEL/CentOS. Need to expand.
 
+# Temporarily turned off CAT II/III to isolate deployment
+# issues.
 apache_cat1:  yes
-apache_cat2:  yes
-apache_cat3:  yes
+apache_cat2:  no
+apache_cat3:  no
 
 httpd_conf_file:  /etc/httpd/conf/httpd.conf
 

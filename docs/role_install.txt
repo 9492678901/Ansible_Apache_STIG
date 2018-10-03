@@ -8,8 +8,14 @@
 #   ansible_apache_stig.tar.gz
 #   ,,                        # Yes, two commas.
 #   <org_name>.apache_stig    # What the role will be.
+
 ansible-galaxy install -p /etc/ansible/roles ansible_apache_stig.tar.gz,,<org_name>.apache_stig
+
 
 # Copy the 'apache_stig.yml' file from the role to your
 # playbook area. Edit the file to reference the role name,
-# <org_name>.apache_stig. Then run the playbook.
+# <org_name>.apache_stig. 
+# Edit defaults/main.yml to set your defaults.
+# Then run the playbook as a user with SUDO access.
+
+ansible-playbook playbooks/ansible_stig.yml -K

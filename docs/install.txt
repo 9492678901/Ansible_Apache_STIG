@@ -1,6 +1,0 @@
-
-## Installing from the git tree
-
-# As a user who can write into the /etc/ansible/roles directory:
-
-  cp -Rp * //etc/ansible/roles/leam_hall.apache_stig/
