@@ -52,3 +52,15 @@
     - cat1
     - V-2246
 
+- name: "HIGH | V-2258 | Web client access to the content directories must be restricted to read and execute. Directory."
+  file:
+    path:     /var/www/html
+    state:    directory
+    owner:    root
+    group:    root
+    mode:     0755
+    recurse:  true
+
+- name: "HIGH | V-2258 | Web client access to the content directories must     be restricted to read and execute. File." 
+    shell: find /var/www/html -type f -exec chmod 0644 {} \;
+

@@ -1,5 +1,5 @@
-- name: restart_httpd
-  # Need info on which systems use "apache", etc.
+- name: restart_and_enable_httpd
   service:
-    name:   httpd
-    state:  restarted
+    name:     httpd
+    state:    restarted
+    enabled:  true
