@@ -30,6 +30,23 @@
   tags:
     - cat2
     - V-2256
+
+- name: "MED | V-2259 | Web server system files must conform to minimum file permission requirements."
+  file:
+    path:     "{{ item }}"
+    mode:     0750
+    owner:    root
+    group:    root
+    recurse:  true
+    state:    directory
+  tags:
+    - cat2
+    - V-2259
+  with_items:
+    - '/etc/httpd/conf'
+    - '/var/log/httpd'
+    - '/var/www'
+
 - name: "MED | V-13613 | The Web site software used with the web server must have all applicable security patches applied and documented."
   yum:
     name:   "*"
