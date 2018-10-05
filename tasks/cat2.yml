@@ -13,6 +13,23 @@
     - cat2
     - V-2225
 
+- name: "MED | V-2255 | The web server’s htpasswd files (if present) must reflect proper ownership and permissions"
+  file:
+    path:   /usr/bin/htpasswd
+    mode:   0550
+  tags:
+    - cat2
+    - V-2255
+
+- name: "MED | V-2256 | The access control files are owned by a privileged web server account."
+  file:
+    path:   /etc/httpd/conf/httpd.conf
+    mode:   0660
+    owner:  root
+    group:  root
+  tags:
+    - cat2
+    - V-2256
 - name: "MED | V-13613 | The Web site software used with the web server must have all applicable security patches applied and documented."
   yum:
     name:   "*"
