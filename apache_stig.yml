@@ -1,7 +1,7 @@
 # apache_stig.yml
 #
 ---
-- hosts:  numbers
+- hosts:  localhost
   become: yes
 
   roles:
