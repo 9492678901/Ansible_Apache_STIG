@@ -5,8 +5,8 @@
 # Temporarily turned off CAT II/III to isolate deployment
 # issues.
 apache_cat1:  yes
-apache_cat2:  no
-apache_cat3:  no
+apache_cat2:  yes
+apache_cat3:  yes
 
 httpd_conf_file:  /etc/httpd/conf/httpd.conf
 

@@ -81,9 +81,6 @@
 - name: "MED | V-26287 | Web Distributed Authoring and Versioning (WebDAV) must be disabled."
   lineinfile:
     path:   "{{ httpd_conf_file }}"
-- name: "MED | V-26287 | Web Distributed Authoring and Versioning (WebDAV) must be disabled."
-  lineinfile:
-    path:   "{{ httpd_conf_file }}"
     state:  absent
     regexp: "^LoadModule {{ item }}"
   with_items:
