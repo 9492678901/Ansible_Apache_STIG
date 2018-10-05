@@ -62,5 +62,5 @@
     recurse:  true
 
 - name: "HIGH | V-2258 | Web client access to the content directories must     be restricted to read and execute. File." 
-    shell: find /var/www/html -type f -exec chmod 0644 {} \;
+  shell: find /var/www/html -type f -exec chmod 0644 {} \;
 
