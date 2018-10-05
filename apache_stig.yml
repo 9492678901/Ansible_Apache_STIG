@@ -1,8 +1,9 @@
 # apache_stig.yml
 #
 ---
-- hosts:  numbers
-  become: yes
+- hosts:        localhost
+  become:       yes
+  gather_facts: no
 
   roles:
     - role: leamhall.apache_stig
