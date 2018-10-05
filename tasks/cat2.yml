@@ -47,6 +47,13 @@
     - '/var/log/httpd'
     - '/var/www'
 
+- name: "MED | V-2260 | A web site must not contain a robots.txt file." 
+  # Note: set this to a local directory if used.
+  shell: find /var/www -type f -name 'robots.txt' -exec rm {} \;
+  tags:
+    - cat2
+    - V-2260
+
 - name: "MED | V-13613 | The Web site software used with the web server must have all applicable security patches applied and documented."
   yum:
     name:   "*"

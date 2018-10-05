@@ -314,6 +314,9 @@ DocumentRoot "/var/www/html"
 		# Per STIG, use Options None unless specific Options required.
 		Options None
     AllowOverride None
+    # STIG V-26323
+    Order deny,allow
+    Deny from all
 </Directory>
 
 #
@@ -990,6 +993,23 @@ BrowserMatch "^Dreamweaver-WebDAV-SCM1" redirect-carefully
 
 #</IfModule>
 # End of proxy directives.
+
+## STIG required settings.
+
+# V-13736
+LimitRequestBody 102400
+
+# V-13737
+LimitRequestFields 20
+
+# V-13738
+LimitRequestFieldSize 8190
+
+# V-13739
+LimitRequestLine 8190
+
+# V-26325
+TraceEnable off
 
 ### Section 3: Virtual Hosts
 #
