@@ -1,4 +1,14 @@
 #
+# This Apache server configuration file has been heavily edited to 
+# meet US DoD STIG requirements. It may or may not perform well for 
+# your intended use. 
+#
+# Relevent STIGS are the "Apache 2.2 Site" and "Apache 2.2 Server".
+#
+# 20181005	-- Leam Hall (leamhall@gmail.com)
+#		-- Begin implementing Version 1 Release 10 directives.
+#
+#
 # This is the main Apache server configuration file.  It contains the
 # configuration directives that give the server its instructions.
 # See <URL:http://httpd.apache.org/docs/2.2/> for detailed information.
@@ -300,7 +310,9 @@ DocumentRoot "/var/www/html"
 # features.  
 #
 <Directory />
-    Options FollowSymLinks  -IncludesNoExec
+    #Options FollowSymLinks  -IncludesNoExec
+		# Per STIG, use Options None unless specific Options required.
+		Options None
     AllowOverride None
 </Directory>
 
@@ -328,7 +340,9 @@ DocumentRoot "/var/www/html"
 # http://httpd.apache.org/docs/2.2/mod/core.html#options
 # for more information.
 #
-    Options Indexes FollowSymLinks  -IncludesNoExec
+    #Options Indexes FollowSymLinks  -IncludesNoExec
+		# Per STIG, use Options None unless specific Options required.
+		Options None
 
 #
 # AllowOverride controls what directives may be placed in .htaccess files.
@@ -551,7 +565,9 @@ ServerSignature On
 Alias /icons/ "/var/www/icons/"
 
 <Directory "/var/www/icons">
-    Options Indexes MultiViews FollowSymLinks  -IncludesNoExec
+    #Options Indexes MultiViews FollowSymLinks  -IncludesNoExec
+		# Per STIG, use Options None unless specific Options required.
+		Options None
     AllowOverride None
     Order allow,deny
     Allow from all
@@ -581,7 +597,9 @@ ScriptAlias /cgi-bin/ "/var/www/cgi-bin/"
 #
 <Directory "/var/www/cgi-bin">
     AllowOverride None
-    Options None  -IncludesNoExec
+    #Options None  -IncludesNoExec
+		# Per STIG, use Options None unless specific Options required.
+		Options None
     Order allow,deny
     Allow from all
 </Directory>
@@ -858,7 +876,9 @@ Alias /error/ "/var/www/error/"
 <IfModule mod_include.c>
     <Directory "/var/www/error">
         AllowOverride None
-        Options  -IncludesNoExec
+        #Options  -IncludesNoExec
+				# Per STIG, use Options None unless specific Options required.
+				Options None
         AddOutputFilter Includes html
         AddHandler type-map var
         Order allow,deny
