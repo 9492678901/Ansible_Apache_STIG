@@ -1,7 +1,7 @@
 # apache_stig.yml
 #
 ---
-- hosts:        localhost
+- hosts:        13.232.244.162
   become:       yes
 
   roles:
